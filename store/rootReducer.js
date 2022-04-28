@@ -1,11 +1,12 @@
 import { combineReducers } from "redux";
 import authSlice from "./authSlice";
-import { bookStoreApi } from "../services/bookStoreApi";
+import { kamakNeApi } from "../services/kamakNeApi";
 import searchBarSlice from "./searchBarSlice";
 import toasterSlice from "./toasterSlice";
 import modelSlice from "./modelSlice";
 import themeModeSlice from "./themeModeSlice";
 import drawerSlice from "./drawerSlice";
+import commentSlice from "./commentSlice";
 
 export const reducer = combineReducers({
   auth: authSlice,
@@ -14,5 +15,6 @@ export const reducer = combineReducers({
   model: modelSlice,
   themeMode: themeModeSlice,
   drawer: drawerSlice,
-  [bookStoreApi.reducerPath]: bookStoreApi.reducer,
+  comments: commentSlice,
+  [kamakNeApi.reducerPath]: kamakNeApi.reducer,
 });

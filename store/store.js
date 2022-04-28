@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { reducer } from "./rootReducer";
-import { bookStoreApi } from "../services/bookStoreApi";
+import { kamakNeApi } from "../services/kamakNeApi";
 import {
   persistStore,
   persistReducer,
@@ -17,7 +17,7 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  whitelist: ["auth", "cart", "themeMode"],
+  whitelist: ["auth", "themeMode"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);
@@ -29,7 +29,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(bookStoreApi.middleware),
+    }).concat(kamakNeApi.middleware),
 });
 
 export const persistor = persistStore(store);

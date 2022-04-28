@@ -8,7 +8,7 @@ import { InputAdornment } from "@mui/material";
 import { TextField } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { addSearch } from "../store/searchBarSlice";
-import { useGetAllBooksSearchQuery } from "../services/bookStoreApi";
+// import { useGetAllBooksSearchQuery } from "../services/bookStoreApi";
 import { useRouter } from "next/router";
 import ToasterAlert from "./_alertToaster";
 
@@ -17,8 +17,8 @@ export default function AppBarSearch({ sx }) {
   const dispatch = useDispatch();
   const router = useRouter();
   const search = useSelector((state) => state.searchBar.search);
-  const { isError, isLoading, isSuccess, data, error, refetch } =
-    useGetAllBooksSearchQuery(search);
+  // const { isError, isLoading, isSuccess, data, error, refetch } =
+  //   useGetAllBooksSearchQuery(search);
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -65,13 +65,13 @@ export default function AppBarSearch({ sx }) {
   };
 
   const handleChange = (event, newValue) => {
-    dispatch(addSearch(newValue));
-    const id = suggestions.filter((i) => i.view === newValue);
-    if (id[0]) {
-      router.push(`/book/${id[0].id}`);
-    } else {
-      return <ToasterAlert message="Something Went Wrong" severity="error" />;
-    }
+    // dispatch(addSearch(newValue));
+    // const id = suggestions.filter((i) => i.view === newValue);
+    // if (id[0]) {
+    //   router.push(`/book/${id[0].id}`);
+    // } else {
+    //   return <ToasterAlert message="Something Went Wrong" severity="error" />;
+    // }
   };
 
   useEffect(() => {
@@ -80,24 +80,24 @@ export default function AppBarSearch({ sx }) {
     }
   }, [search]);
 
-  useEffect(() => {
-    if (data) {
-      const filter = data.map((book) => ({
-        id: book.id,
-        view: `${book.title} - ${book.publisher}`,
-      }));
-      setSuggestions(filter);
-    } else {
-      setSuggestions([]);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     const filter = data.map((book) => ({
+  //       id: book.id,
+  //       view: `${book.title} - ${book.publisher}`,
+  //     }));
+  //     setSuggestions(filter);
+  //   } else {
+  //     setSuggestions([]);
+  //   }
+  // }, [data]);
 
   return (
     <Autocomplete
       freeSolo
       id="free-solo-2-demo"
       options={suggestions.map((suggestion) => suggestion.view)}
-      loading={isLoading}
+      // loading={isLoading}
       renderInput={(params) => (
         <TextField
           {...params}

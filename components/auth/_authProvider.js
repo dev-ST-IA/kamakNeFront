@@ -2,12 +2,12 @@ import React from "react";
 import { AuthContext } from "../../context/_authContext";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { useGetUserQuery } from "../../services/bookStoreApi";
+// import { useGetUserQuery } from "../../services/bookStoreApi";
 import { setUserDetails } from "../../store/authSlice";
 
 export default function AuthProvider({ children }) {
   const dispatch = useDispatch();
-  const { data, isSuccess, isError, error } = useGetUserQuery();
+  // const { data, isSuccess, isError, error } = useGetUserQuery();
   const [isUserLogged, setIsUserLogged] = useState(false);
   const authData = useSelector((state) => state.auth);
   const token = authData.token;
@@ -17,11 +17,11 @@ export default function AuthProvider({ children }) {
     setIsUserLogged(isUserLoggedIn);
   }, [authData]);
 
-  useEffect(() => {
-    if (!isError && isSuccess && data) {
-      dispatch(setUserDetails(data));
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (!isError && isSuccess && data) {
+  //     dispatch(setUserDetails(data));
+  //   }
+  // }, [data]);
 
   // const bulkAdd = async (products) => {
   //   products.forEach((product) => {

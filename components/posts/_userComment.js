@@ -6,19 +6,31 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export default function _userComment() {
+export default function _userComment({
+  _id,
+  comment,
+  createdAt,
+  post,
+  ...props
+}) {
+  const date = new Date(createdAt) || new Date();
   return (
     <Box
-      sx={{ minWidth: 1, display: "flex", flexDirection: "column", margin: 2 }}
+      sx={{
+        maxWidth: 1,
+        display: "flex",
+        flexDirection: "column",
+        margin: 2,
+      }}
     >
       <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
-        Word of the Day
+        User Name(N/a)
       </Typography>
       <Typography sx={{ fontSize: 12 }} variant="body1" component="div">
-        belent
+        {comment}
       </Typography>
       <Typography sx={{ fontSize: 8 }} color="text.secondary">
-        adjective
+        {date.toLocaleString()}
       </Typography>
     </Box>
   );
