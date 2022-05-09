@@ -10,16 +10,14 @@ export const setToken = createAsyncThunk(
 export const setUserDetails = createAsyncThunk(
   "auth/setUserDetails",
   async ({
-    Id = null,
-    phoneNumber = null,
+    _id = null,
     userName = null,
     emailAddress = null,
     firstName = null,
     lastName = null,
   }) => {
     const val = await {
-      Id: Id,
-      phoneNumber: phoneNumber,
+      Id: _id,
       userName: userName,
       emailAddress: emailAddress,
       firstName: firstName,
