@@ -20,11 +20,6 @@ export const registerSchema = Yup.object({
     .required("Phone Number is Required"),
 
   emailAddress: Yup.string().email().required("E-mail is Required"),
-
-  password: Yup.string("Enter A Password")
-    .min(7, "Too Short")
-    .required("Enter A Password"),
-
   cPassword: Yup.string("Enter A Same Password")
     .oneOf([Yup.ref("password"), null], "Passwords Must Match")
     .required("Required Field & Passwords Must Match"),

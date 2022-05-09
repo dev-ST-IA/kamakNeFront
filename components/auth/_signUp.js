@@ -8,7 +8,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { useFormik } from "formik";
 import { registerSchema } from "../../schemas/registerSchema";
-import { useRegisterMutation } from "../../services/bookStoreApi";
+import { useRegisterMutation } from "../../services/kamakNeApi";
 import { useSelector, useDispatch } from "react-redux";
 import { setToken, setUserDetails } from "../../store/authSlice";
 import ToasterAlert from "../_alertToaster";
@@ -33,7 +33,6 @@ export default function SignUp() {
       userName: "",
       password: "",
       cPassword: "",
-      phoneNumber: "",
       firstName: "",
       lastName: "",
     },
@@ -71,13 +70,13 @@ export default function SignUp() {
     }
   };
 
-  if (isUserLogged) {
-    router.back();
-    dispatch(setOpen(true));
-    return (
-      <ToasterAlert isOpen={open} severity="warning" message="Your Logged In" />
-    );
-  }
+  // if (isUserLogged) {
+  //   router.back();
+  //   dispatch(setOpen(true));
+  //   return (
+  //     <ToasterAlert isOpen={open} severity="warning" message="Your Logged In" />
+  //   );
+  // }
   return (
     <Box
       sx={{
@@ -166,25 +165,6 @@ export default function SignUp() {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              value={formik.values.phoneNumber}
-              onChange={formik.handleChange}
-              error={
-                formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)
-              }
-              helperText={
-                formik.touched.phoneNumber && formik.errors.phoneNumber
-              }
-              required
-              fullWidth
-              id="phoneNumber"
-              label="Mobile Number"
-              name="phoneNumber"
-              autoComplete="phoneNumber"
-              type="tel"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
               value={formik.values.password}
               onChange={formik.handleChange}
               error={formik.touched.password && Boolean(formik.errors.password)}
@@ -215,12 +195,6 @@ export default function SignUp() {
               autoComplete="new-password"
             />
           </Grid>
-          {/* <Grid item xs={12}>
-            <FormControlLabel
-              control={<Checkbox value="allowExtraEmails" color="primary" />}
-              label="I want to receive inspiration, marketing promotions and updates via email."
-            />
-          </Grid> */}
         </Grid>
         <Button
           type="submit"
@@ -241,11 +215,6 @@ export default function SignUp() {
               variant="body2"
             >
               Already have an account? Sign in
-            </Link>
-          </Grid>
-          <Grid item>
-            <Link href="/" variant="body2">
-              {"Just Shop"}
             </Link>
           </Grid>
         </Grid>

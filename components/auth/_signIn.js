@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/dist/client/router";
-import { useLoginMutation } from "../../services/bookStoreApi";
+import { useLoginMutation } from "../../services/kamakNeApi";
 import { useFormik } from "formik";
 import { loginSchema } from "../../schemas/loginSchema";
 import { Switch } from "@mui/material";
@@ -183,11 +183,6 @@ export default function SignIn() {
               variant="body2"
             >
               {"Don't have an account? Sign Up"}
-            </Link>
-          </Grid>
-          <Grid item>
-            <Link href="/" variant="body2">
-              {"Just Shop"}
             </Link>
           </Grid>
         </Grid>
